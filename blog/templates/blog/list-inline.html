@@ -108,12 +108,48 @@
 
   <div class="extra text-white ">
        {% if request.user.is_authenticated %} 
-    <div data-bs-toggle="modal"  data-bs-target="#exampleModal" class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> </div>
+       <div class="ui labeled button" tabindex="0" data-bs-toggle="modal"  data-bs-target="#exampleModal">
+  <div class="ui teal button">
+    <i class="fa-solid fa-comments"></i> Comment
+  </div>
+ 
+</div>
+<div class="ui labeled button" tabindex="0">
+  <div class="ui red button">
+    <i class="heart icon"></i> Like
+  </div>
+  <a class="ui basic red left pointing label">
+    1,048
+  </a>
+</div>
+    
     {% else %}
-    <div data-bs-toggle="modal"  data-bs-target="#authenticateModal" class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> </div>
+
+
+   
+    <div data-bs-toggle="modal"  data-bs-target="#authenticateModal" class="ui labeled button" tabindex="0" data-bs-toggle="modal"  data-bs-target="#exampleModal" style="cursor: pointer;">
+  <div class="ui teal button">
+    <i class="fa-solid fa-comments"></i> Comment
+  </div>
+ 
+</div>
+
+<div class="ui labeled button" tabindex="0" data-bs-toggle="modal"  data-bs-target="#authenticateModal">
+  <div class="ui red button">
+    <i class="heart icon"></i> Like
+  </div>
+  <a class="ui basic red left pointing label">
+    1,048
+  </a>
+</div>
    {% endif %}
-    <div class="ui label me-4 like" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-thumbs-up fa-2x"></i>  </div>
-    <div class="ui label me-4" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-share-from-square fa-2x"></i> </div>
+
+
+
+
+   
+    
+    <!--<div class="ui label me-4" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-share-from-square fa-2x"></i> </div>-->
     
     
 
