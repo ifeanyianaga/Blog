@@ -10,7 +10,7 @@ from django.utils import timezone
 
 def home_page(request):
 	now=timezone.now()
-	title ="Ifeanyi Anaga"
+	title ="Screecher"
 	qs=BlogPost.objects.all().published()
 	paginator=Paginator(qs,4)
 	page=request.GET.get('page')

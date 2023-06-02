@@ -46,7 +46,9 @@
 
 
 
-
+.navbar-login{
+  background: #4fb9af;
+}
 
 
 
@@ -103,7 +105,7 @@
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-
+ {% include "navbar-login.html" %}
 
 <div  style="background-color: #DADADA;" class="p-4">
 
@@ -123,9 +125,7 @@
         {% csrf_token %}
         {% bootstrap_form form %}
         <input type="submit" class="ui fluid large teal submit button mb-2" value="Create Account">
-        <small>By creating an account, you agree to INTERQUESTS's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice.</a></small><br>
-        <small>
-          Already have an account? <a href="{% url 'login' %}"> Sign-In</a></small>
+       <small> Already have an account? <a href="{% url 'login' %}"> Sign-In</a></small>
        
       </form>
     </div>

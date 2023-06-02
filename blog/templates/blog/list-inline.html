@@ -37,7 +37,7 @@
       <a class="header text-white p-2 fs-4 titles text-decoration-none" style="color: #D9C179 !important;">{{blog_post.title|title}}</a>
       <div class="meta">
         {% autoescape off %}
-        <span class="text-white p-2 articles lh-lg">{{blog_post.content|linebreaks|truncatewords:30}}</span>
+        <span class="text-white p-2 articles lh-lg" style="text-align: justify; text-justify: inter-word;">{{blog_post.content|linebreaks|truncatewords:30}}</span>
         {% endautoescape %}
       </div>    
       <div class="description text-white">
@@ -81,7 +81,7 @@
       
       <div class="meta">
         {% autoescape off %}
-        <span class="text-white p-4 articles lh-lg">{{blog_post.content|linebreaks}}</span>
+        <span class="text-white p-4 articles lh-lg" style="text-align: justify; text-justify: inter-word;">{{blog_post.content|linebreaks}}</span>
         {% endautoescape %}
       </div>
 
@@ -211,7 +211,7 @@
               3 days ago
               </div>
             </div>
-            <div class="extra text text-white articles">
+            <div class="extra text text-white articles" style="text-align: justify; text-justify: inter-word;">
               {{comment.comment}}
             </div>
             <div class="meta">
