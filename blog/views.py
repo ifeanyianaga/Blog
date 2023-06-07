@@ -257,14 +257,13 @@ def profile(request):
 		context={'full_name':full_name,'now':now,'object_list':qs,'form':form}
 		return render(request,template,context)
 		
-from django.http import Http404		
-"""		
-class PostLikeCreate(APIView):
-	authentication_classes = [authentication.SessionAuthentication]
-	permission_classes = [permissions.IsAuthenticated]
+
+		
+
+	
 
 
-"""
+
 
 
 
