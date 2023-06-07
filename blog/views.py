@@ -9,6 +9,11 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from blog.forms import SelectForm
 from django.views.generic import ListView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+from blog.api.serializers import BlogPostSerializer
 
 
 class Blog_post_list_view(ListView):
@@ -78,9 +83,12 @@ def blog_post_create_view(request):
 
 def blog_post_detail_view(request,slug):
 	
+
+	
 	now=timezone.now()
 	
 	obj=get_object_or_404(BlogPost,slug=slug)
+	users_likes = obj.likes.all()
 	
 	comment=obj.commentsection_set.all()
 	count=comment.count()
@@ -99,11 +107,16 @@ def blog_post_detail_view(request,slug):
 		return HttpResponseRedirect(reverse('detail',kwargs={'slug':slug}))
 		
 	author=obj.user
-	visitor=request.user 
-	context={"object":obj,'now':now,'author':author,'visitor':visitor,"comment":comment,"form":form}
+	visitor=request.user
+	
+	context={"object":obj,'now':now,'author':author,'visitor':visitor,"comment":comment,"form":form,"users_likes":users_likes}
 	template_name="blog/detail.html"
 	return render(request,template_name,context)
-	
+
+
+
+
+
 @login_required
 @staff_member_required
 def blog_post_update_view(request,slug):
@@ -244,21 +257,29 @@ def profile(request):
 		context={'full_name':full_name,'now':now,'object_list':qs,'form':form}
 		return render(request,template,context)
 		
-		
-		
+from django.http import Http404		
+"""		
+class PostLikeCreate(APIView):
+	authentication_classes = [authentication.SessionAuthentication]
+	permission_classes = [permissions.IsAuthenticated]
 
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+	
+   
+	
 	
 		
 
 		
-		
-		
-	
-		
-
-		
-	
-
-
-	
-	

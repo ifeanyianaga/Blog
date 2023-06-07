@@ -31,11 +31,11 @@ ALLOWED_HOSTS = ['notyet.up.railway.app','192.168.43.1','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'jazzmin',
 	'django.contrib.humanize',
 	'searches.apps.SearchesConfig',
 	'blog.apps.BlogConfig',
-	
 	'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'fontawesomefree',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -220,12 +222,15 @@ BOOTSTRAP5 = {
 
 
 
-CSRF_TRUSTED_ORIGINS = ['https://notyet.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://notyet.up.railway.app',"http://127.0.0.1:8000"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
+CORS_ALLOWED_ORIGINS = [
+   
+    "http://127.0.0.1:8000",
+]
 
 
 

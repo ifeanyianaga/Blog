@@ -3,7 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.db.models import  Q
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 
@@ -54,6 +54,7 @@ class BlogPost(models.Model):
 	publish_date=models.DateTimeField(auto_now=False,auto_now_add=False,null=True,blank=True,help_text="use this format:yyyy-mm-dd")
 	timestamp=models.DateTimeField(auto_now_add=True)
 	updated=models.DateTimeField(auto_now_add=True)
+	likes = models.ManyToManyField(User,related_name="blog_post_like")
 
 	objects=BlogPostManager()
 
@@ -95,3 +96,8 @@ class CommentSection(models.Model):
 	def __str__(self):
 		return self.comment
 		
+
+
+
+
+        
