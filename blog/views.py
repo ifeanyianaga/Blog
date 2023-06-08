@@ -258,7 +258,77 @@ def profile(request):
 		return render(request,template,context)
 		
 
+
+from django.views.generic import RedirectView
+
+
+
+
+class PostLikeToggle(APIView):
+	authentication_classes = [authentication.SessionAuthentication]
+	permission_classes = [permissions.IsAuthenticated]
+
+	def get(self,request,slug=None,format=None):
+		#slug = self.kwargs.get("slug")
+		obj = get_object_or_404(BlogPost,slug=slug)
+		url_ = obj.get_absolute_url()
+		user = self.request.user
+		liked = False
+		NotLiked = False
+
+
+		if user.is_authenticated:
+			if user in obj.likes.all():
+				obj.likes.remove(user)
+				NotLiked = True
+			else:
+				liked = True
+				obj.likes.add(user)
 		
+		data ={
+			"liked":liked,
+			"NotLiked":NotLiked,
+		}
+		return Response(data)
+
+class PostLikeDB(APIView):
+	authentication_classes = [authentication.SessionAuthentication]
+	permission_classes = [permissions.IsAuthenticated]
+
+	def get(self,request,slug=None,format=None):
+		obj = get_object_or_404(BlogPost,slug=slug)
+		url_ = obj.get_absolute_url()
+		user = self.request.user
+		data = obj.likes.count()
+		
+		return Response(data)
+
+
+
+class PostLikeUsers(APIView):
+	authentication_classes = [authentication.SessionAuthentication]
+	permission_classes = [permissions.IsAuthenticated]
+
+	def get(self,request,slug=None,format=None):
+		obj = get_object_or_404(BlogPost,slug=slug)
+		serializer = BlogPostSerializer(obj)
+		url_ = obj.get_absolute_url()
+		user = self.request.user
+		data = obj.likes.all()
+
+		return Response(str(data))
+		
+		
+		
+		
+
+		
+		
+
+
+
+
+
 
 	
 

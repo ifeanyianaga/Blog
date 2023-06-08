@@ -5,7 +5,8 @@ from blog.models import BlogPost
 class BlogPostSerializer(ModelSerializer):
     class Meta:
         model = BlogPost
-        fields = '__all__'
+        fields = ['id','user','image','title','slug','content','publish_date','timestamp','updated','likes']
+        #fields = ['likes']
 
 
 

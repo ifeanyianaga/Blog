@@ -54,7 +54,8 @@ class BlogPost(models.Model):
 	publish_date=models.DateTimeField(auto_now=False,auto_now_add=False,null=True,blank=True,help_text="use this format:yyyy-mm-dd")
 	timestamp=models.DateTimeField(auto_now_add=True)
 	updated=models.DateTimeField(auto_now_add=True)
-	likes = models.ManyToManyField(User,related_name="blog_post_like")
+	likes = models.ManyToManyField(User,related_name="blog_post_like",blank=True)
+	
 
 	objects=BlogPostManager()
 
@@ -71,10 +72,21 @@ class BlogPost(models.Model):
 	def get_absolute_url(self):
 		return f"/blog/{self.slug}"
 
+	def get_api_like_url(self):
+		return f"/blog/{self.slug}/like"
+
+	
+	def get_like_count(self):
+		return f"/blog/{self.slug}/getCount"
+
+	def get_like_users(self):
+		return f"/blog/{self.slug}/getUsers"
+
 	
 	def get_edit_url(self):
 		
 		return f"/blog/{self.slug}/modify"
+	
 
 
 	def get_delete_url(self):

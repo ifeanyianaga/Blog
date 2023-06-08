@@ -116,10 +116,12 @@
 </div>
 
 <div class="ui labeled button" tabindex="0">
-  <div class="ui red button">
-    <i class="heart icon"></i> likes
+<form method="post">
+  <div class="ui red button" id="like_button" data-href="{{blog_post.get_api_like_url}}">
+    <i class="heart icon"></i> like
   </div>
-  <a class="ui basic red left pointing label" data-bs-toggle="modal" data-bs-target="#staticLikes">
+  </form>
+  <a class="ui basic red left pointing label" data-bs-toggle="modal" data-bs-target="#staticLikes"  id="like_display" data-href="{{blog_post.get_like_count}}">
   {{blog_post.likes.count}}
   </a>
 </div>
@@ -137,7 +139,7 @@
 
 <div class="ui labeled button" tabindex="0" data-bs-toggle="modal"  data-bs-target="#authenticateModal">
   <div class="ui red button">
-    <i class="heart icon"></i> likes
+    <i class="heart icon"></i> like
   </div>
   <a class="ui basic red left pointing label" data-bs-toggle="modal" data-bs-target="#staticLikes">
     {{blog_post.likes.count}}
@@ -309,7 +311,7 @@ List of users that like a post -->
           <div class="item">
             <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/helen.jpg">
             <div class="content">
-              <div class="header">{{likes.get_full_name}}</div>
+              <div class="header" id="like_users" data-href="{{object.get_like_users}}">{{likes.get_full_name}}</div>
             </div>
           </div>
           {% endfor %}
