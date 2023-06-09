@@ -265,25 +265,27 @@ footer li a{
 <script>
 $(document).ready(function(){
 
-/**
-  function getLikeUsers(){
 
-    var url_like_users = $("#like_users").attr("data-href");
+  function getLikeColors(){
+
+    var url_like_users = $("#like_display").attr("data-href-color");
     console.log(url_like_users);
+
     fetch(url_like_users,{
       method:"GET",
       headers:{"X-Requested-With": "XMLHttpRequest"}
     })
     .then(response=>response.json())
     .then(data =>{
-      console.log(data);
+
+      //$("#like_color").addClass(data);
     
 
     })
 
 
   }
-  **/
+
 
   function getLikeCountDB(){
     var url_  = $("#like_display").attr("data-href");
@@ -321,6 +323,7 @@ headers:{
 .then(data=>{
   
   getLikeCountDB();
+  //getLikeColors();
   //getLikeUsers();
   
 

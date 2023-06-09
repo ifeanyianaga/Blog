@@ -260,7 +260,8 @@ def profile(request):
 
 
 from django.views.generic import RedirectView
-
+from django.db.models import F
+from account.models import AccountUser
 
 
 
@@ -271,6 +272,9 @@ class PostLikeToggle(APIView):
 	def get(self,request,slug=None,format=None):
 		#slug = self.kwargs.get("slug")
 		obj = get_object_or_404(BlogPost,slug=slug)
+		user_obj = get_object_or_404(AccountUser,email=request.user)
+
+		print(user_obj)
 		url_ = obj.get_absolute_url()
 		user = self.request.user
 		liked = False
@@ -280,10 +284,14 @@ class PostLikeToggle(APIView):
 		if user.is_authenticated:
 			if user in obj.likes.all():
 				obj.likes.remove(user)
+				user_obj.like_color = "ui red"
+				user_obj.save()
 				NotLiked = True
 			else:
-				liked = True
 				obj.likes.add(user)
+				user_obj.like_color = "ui blue"
+				user_obj.save()
+				liked = True
 		
 		data ={
 			"liked":liked,
@@ -300,6 +308,19 @@ class PostLikeDB(APIView):
 		url_ = obj.get_absolute_url()
 		user = self.request.user
 		data = obj.likes.count()
+		
+		return Response(data)
+
+class PostLikeColor(APIView):
+	authentication_classes = [authentication.SessionAuthentication]
+	permission_classes = [permissions.IsAuthenticated]
+
+	def get(self,request,slug=None,format=None):
+		obj = get_object_or_404(AccountUser,email=request.user)
+		#url_ = obj.get_absolute_url()
+		user = self.request.user
+		data = obj.like_color
+		print(data)
 		
 		return Response(data)
 
