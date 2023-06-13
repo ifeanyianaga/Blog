@@ -312,18 +312,7 @@ class PostLikeDB(APIView):
 		
 		return Response(data)
 
-class PostLikeColor(APIView):
-	authentication_classes = [authentication.SessionAuthentication]
-	permission_classes = [permissions.IsAuthenticated]
 
-	def get(self,request,slug=None,format=None):
-		obj = get_object_or_404(AccountUser,email=request.user)
-		#url_ = obj.get_absolute_url()
-		user = self.request.user
-		data = obj.like_color
-		print(data)
-		
-		return Response(data)
 
 
 

@@ -83,8 +83,6 @@ class BlogPost(models.Model):
 	def get_like_users(self):
 		return f"/blog/{self.slug}/getUsers"
 
-	def get_like_users_color(self):
-		return f"/blog/{self.slug}/getLikeColor"
 
 	
 	def get_edit_url(self):
