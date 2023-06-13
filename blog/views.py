@@ -284,6 +284,8 @@ class PostLikeToggle(APIView):
 		if user.is_authenticated:
 			if user in obj.likes.all():
 				obj.likes.remove(user)
+				 
+				
 				
 				
 				
@@ -292,11 +294,13 @@ class PostLikeToggle(APIView):
 				obj.likes.add(user)
 				
 				
+				
 				liked = True
 		
 		data ={
 			"liked":liked,
 			"NotLiked":NotLiked,
+			
 		}
 		return Response(data)
 
