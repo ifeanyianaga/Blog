@@ -284,13 +284,14 @@ class PostLikeToggle(APIView):
 		if user.is_authenticated:
 			if user in obj.likes.all():
 				obj.likes.remove(user)
-				user_obj.like_color = "ui red"
-				user_obj.save()
+				
+				
+				
 				NotLiked = True
 			else:
 				obj.likes.add(user)
-				user_obj.like_color = "ui blue"
-				user_obj.save()
+				
+				
 				liked = True
 		
 		data ={

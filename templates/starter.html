@@ -297,6 +297,12 @@ $(document).ready(function(){
     .then(data =>{
       console.log(data);
       $("#like_display").text(parseInt(data));
+      
+
+      
+  
+      
+
     })
 
    
@@ -321,7 +327,17 @@ headers:{
 })
 .then(response => response.json())
 .then(data=>{
-  
+  console.log(data.liked)
+  if(data.liked){
+    $("#like_button").toggleClass("inverted")
+  }
+  else{
+    $("#like_button").toggleClass("inverted")
+  }
+
+
+
+  //var color = $(".inverted").hasClass("inverted")
   getLikeCountDB();
   //getLikeColors();
   //getLikeUsers();

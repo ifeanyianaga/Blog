@@ -56,6 +56,7 @@ class BlogPost(models.Model):
 	updated=models.DateTimeField(auto_now_add=True)
 	likes = models.ManyToManyField(User,related_name="blog_post_like",blank=True)
 	
+	
 
 	objects=BlogPostManager()
 
