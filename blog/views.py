@@ -218,6 +218,7 @@ def delete_comment(request,slug,comment_id):
 	
 	
 @login_required
+
 def profile(request):
 		now=timezone.now()
 		template="blog/profile.html"

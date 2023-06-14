@@ -118,11 +118,11 @@
 <div class="ui labeled button" tabindex="0">
 
  {% if request.user.is_authenticated and request.user in blog_post.likes.all %}
- <div class="ui red button" id="like_button" data-href="{{blog_post.get_api_like_url}}">
+ <div class="ui red button" id="like_button" data-href="{{blog_post.get_api_like_url}}" title="Like">
   <i class="heart icon" id="like_color"></i> like
 </div>
 {% else %}
-<div class="ui red inverted button" id="like_button" data-href="{{blog_post.get_api_like_url}}">
+<div class="ui red inverted button" id="like_button" data-href="{{blog_post.get_api_like_url}}" title="Like">
   <i class="heart icon" id="like_color"></i> like
 </div>
 
@@ -150,7 +150,7 @@
   <div class="ui red inverted button">
     <i class="heart icon"></i> like
   </div>
-  <a class="ui basic red left pointing label" data-bs-toggle="modal" data-bs-target="#staticLikes">
+  <a class="ui basic red left pointing label" data-bs-toggle="modal" data-bs-target="#staticLikes" title="Like">
     {{blog_post.likes.count}}
   </a>
 </div>
